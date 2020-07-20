@@ -7,12 +7,12 @@
         </div>
 
         <ul class = "navbar-nav">
-            <li><a href = "/welcome/ajmk93" class = "nav-link">Home</a></li>
-            <li><a href = "/ToDos" class = "nav-link">ToDos</a></li>
+            <li><a *ngIf = "hardcodedAuthenticationService.isUserLoggedIn();" routerLink = "/welcome/ajmk93" class = "nav-link">Home</a></li>
+            <li><a *ngIf = "hardcodedAuthenticationService.isUserLoggedIn();" routerLink = "/ToDos" class = "nav-link">ToDos</a></li>
         </ul>
         <ul class = "navbar-nav navbar-collapse justify-content-end">
-            <li><a href = "/login" class = "nav-link">Login</a></li>
-            <li><a href = "/logout" class = "nav-link">Logout</a></li>
+            <li><a *ngIf = "!hardcodedAuthenticationService.isUserLoggedIn();" routerLink = "/login" class = "nav-link">Login</a></li>
+            <li><a *ngIf = "hardcodedAuthenticationService.isUserLoggedIn();" routerLink = "/logout" class = "nav-link">Logout</a></li>
         </ul>
     </nav>
 </header>

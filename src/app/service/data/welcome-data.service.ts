@@ -1,0 +1,27 @@
+import { HttpClient } from '@angular/common/http'
+import { Injectable } from '@angular/core';
+
+
+export class HelloWorldBean {
+  constructor(public message:string) { }
+}
+
+
+@Injectable({
+  providedIn: 'root'
+})
+export class WelcomeDataService {
+
+  constructor(
+    private http:HttpClient
+  ) { }
+
+  // Retrieve data from backend service
+  executeHelloWorldBeanService() {
+    return this.http.get<HelloWorldBean>('http://localhost:8080/hello-world-bean'); // observable helps define what you want, but need to subscribe to inboke.
+  }
+
+  executeHelloWorldServiceWithPathVariable(name) {
+    return this.http.get<HelloWorldBean>(`http://localhost:8080/hello-world/path-variable/${name}`);
+  }
+}

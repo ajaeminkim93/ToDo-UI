@@ -37,8 +37,6 @@ export class WelcomeDataService {
     let password = '123';
     let basicAuthHeaderString = 'Basic ' + window.btoa(username + ':' + password);
 
-  //Access to XMLHttpRequest at 'http://localhost:8080/hello-world/path-variable/ajmk93' from origin 'http://localhost:4200' 
-  //has been blocked by CORS policy: No 'Access-Control-Allow-Origin' header is present on the requested resource.
     return basicAuthHeaderString;
   }
 }

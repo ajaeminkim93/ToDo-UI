@@ -53,6 +53,11 @@ export class ListToDosComponent implements OnInit {
     console.log(`update ${id}`);
   }
 
+  addTodo(id) {
+    this.router.navigate(['todos', -1]);
+    console.log(`update ${id}`);
+  }
+
   deleteTodo(id) {
     console.log(`delete todo ${id}`);
     this.todoService.deleteTodo('ajmk93', id).subscribe(

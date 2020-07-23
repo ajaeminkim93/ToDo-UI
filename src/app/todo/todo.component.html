@@ -1,14 +1,22 @@
+<h1>Todos!</h1>
+<div></div>
+
 <div class = "container">
+    <div class = "alert alert-warning" *ngIf="todoForm.dirty && todoForm.invalid">Enter valid input! :D</div>
+    <div class = "alert alert-warning" *ngIf="todoForm.dirty && targetDate.invalid">Enter valid date</div>
+    <div class = "alert alert-warning" *ngIf="todoForm.dirty && description.invalid">Trying to do nothing? weird.. </div>
 
-    <fieldset class="form-group">
-        <label>Description</label>
-        <input type="text" [(ngModel)]="todo.description" class="form-control" name="description" required="required">
-    </fieldset>
+    <form (ngSubmit)="!todoForm.invalid && saveTodo()" #todoForm="ngForm">
+        <fieldset class="form-group">
+            <label>Description</label>
+            <input type="text" #description="ngModel" [(ngModel)]="todo.description" class="form-control" name="description" required="required">
+        </fieldset>
 
-    <fieldset class="form-group">
-        <label>Date</label>
-        <input type="date" [ngModel]="todo.targetDate | date:'yyyy-MM-dd'" (ngModelChanged)="todo.targetDate=$event" class="form-control" name="targetDate" required="required">
-    </fieldset>
+        <fieldset class="form-group">
+            <label>Date</label>
+            <input type="date" #targetDate="ngModel" [ngModel]="todo.targetDate | date:'yyyy-MM-dd'" (ngModelChanged)="todo.targetDate=$event" class="form-control" name="targetDate" required="required">
+        </fieldset>
 
-    <button class="btn btn-success" (click)="saveTodo()">Save</button>
+        <button type="submit" class="btn btn-success">Save</button>
+    </form>
 </div>

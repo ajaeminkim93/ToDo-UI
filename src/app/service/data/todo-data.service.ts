@@ -16,4 +16,13 @@ export class TodoDataService {
   retrieveAllTodos(username) {
     return this.http.get<ToDo[]>(`http://localhost:8080/users/${username}/todos`); // observable helps define what you want, but need to subscribe to inboke.
   }
+
+  retrieveTodo(username, id) {
+    return this.http.get<ToDo>(`http://localhost:8080/users/${username}/todos/${id}`);
+  }
+
+  deleteTodo(username, id) {
+    return this.http.delete(`http://localhost:8080/users/${username}/todos/${id}`);
+  }
+
 }

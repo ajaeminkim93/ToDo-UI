@@ -10,7 +10,7 @@ import { BasicAuthenticationService } from '../service/basic-authentication.serv
 })
 export class LoginComponent implements OnInit {
 
-  username = 'ajmk93'
+  username = 'andrew'
   password = ''
   errorMessage = 'Invalid Credentials!'
   invalidLogin = false;
@@ -18,7 +18,7 @@ export class LoginComponent implements OnInit {
 
 
   // Router
-  // Dependecy Injection
+  // Dependancy Injection
   constructor(
     private router: Router, 
     private hardcodedAuthenticationServices: HardcodedAuthenticationService,
@@ -42,6 +42,20 @@ export class LoginComponent implements OnInit {
 
   handleBasicAuthLogin() {
     this.basicAuthenticationService.executeAuthenticationService(this.username, this.password)
+        .subscribe(
+          data => {
+            console.log(data)
+            this.router.navigate(['welcome', this.username])
+            this.invalidLogin = false      
+          },
+          error => {
+            console.log(error)
+            this.invalidLogin = true
+          }
+        )
+  }
+  handleJWTAuthLogin() {
+    this.basicAuthenticationService.executeJWTAuthenticationService(this.username, this.password)
       .subscribe(
         data => {
           console.log(data)

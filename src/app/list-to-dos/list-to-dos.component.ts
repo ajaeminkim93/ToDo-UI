@@ -40,7 +40,7 @@ export class ListToDosComponent implements OnInit {
   }
 
   refreshTodos() {
-    this.todoService.retrieveAllTodos('ajmk93').subscribe(
+    this.todoService.retrieveAllTodos('andrew').subscribe(
       response => {
         console.log(response);
         this.todos = response;
@@ -60,7 +60,7 @@ export class ListToDosComponent implements OnInit {
 
   deleteTodo(id) {
     console.log(`delete todo ${id}`);
-    this.todoService.deleteTodo('ajmk93', id).subscribe(
+    this.todoService.deleteTodo('andrew', id).subscribe(
       response => {
         console.log(response);
         this.message = `You have successfully deleted ToDo ${id}`;
